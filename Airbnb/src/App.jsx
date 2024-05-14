@@ -2,14 +2,28 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Card from "./components/Card";
+import CardData from "./components/CardData";
 function App() {
+  const Cardelements = CardData.map((card) => {
+    return (
+      <Card
+        img={card.img}
+        title={card.title}
+        reviews={card.reviews}
+        rating={card.rating}
+        country={card.country}
+        price={card.price}
+      />
+    );
+  });
   return (
     <div>
       <Navbar />
       <Hero />
       <div className="flex mb-20 justify-center">
-        <Card
-          img="images/Card-1.png"
+        {Cardelements}
+        {/* <Card
+          img="Card-1.png"
           title="Life Lessons With Katie"
           reviews={8}
           rating={5}
@@ -17,7 +31,7 @@ function App() {
           price={589}
         />
         <Card
-          img="images/Card-2.jpg"
+          img="Card-2.jpg"
           title="Gymnastics with Shekar"
           reviews={10}
           rating={4}
@@ -25,7 +39,7 @@ function App() {
           price={200}
         />
         <Card
-          img="images/Card-3.jpg"
+          img="Card-3.jpg"
           title="Education System by Karan"
           reviews={100}
           rating={10}
@@ -33,13 +47,14 @@ function App() {
           price={1800}
         />
         <Card
-          img="images/Card-4.jpg"
+          img="Card-4.jpg"
           title="Travelling Experiences With Nayab"
           reviews={2}
           rating={5}
           country="China"
           price={600}
-        />
+        /> */}
+        {/* I have done it using props now using an arry for same thing  */}
       </div>
     </div>
   );

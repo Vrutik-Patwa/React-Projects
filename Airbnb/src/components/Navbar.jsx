@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="h-[70px] flex py-[20px] px-[50px] shadow-lg">
+    <div className="h-[70px] flex py-[20px] px-[50px] shadow-lg ml-10">
       <img src="images\logo.png" alt="logo" className="max-w-[100px]" />
     </div>
   );

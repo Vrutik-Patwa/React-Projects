@@ -8,7 +8,7 @@ const Hero = () => {
         className="w-[980px] h-[564px] ml-auto mr-auto mt-20"
         alt=""
       />
-      <div className="mt-20 ml-56">
+      <div className="mt-20 ml-80">
         <h1 className="font-bold text-6xl">Online Experiences</h1>
         <p className="mt-4 font-light ml-1 text-xl">
           Join Unique interactive elements led by one-of-a-kind hosts <br></br>
