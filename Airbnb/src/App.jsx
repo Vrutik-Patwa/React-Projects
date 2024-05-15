@@ -6,14 +6,21 @@ import CardData from "./components/CardData";
 function App() {
   const Cardelements = CardData.map((card) => {
     return (
+      // <Card
+      //   img={card.img}
+      //   title={card.title}
+      //   reviews={card.reviews}
+      //   rating={card.rating}
+      //   country={card.country}
+      //   price={card.price}
+      //   openspots={card.openspots}
+      // />
+      // Now passing props as an object
+
       <Card
-        img={card.img}
-        title={card.title}
-        reviews={card.reviews}
-        rating={card.rating}
-        country={card.country}
-        price={card.price}
-        openspots={card.openspots}
+        item={card}
+        // Have not mentioned id make sure each element has an id
+        // Can also use spread out props as {...item} which will basically render same thing
       />
     );
   });

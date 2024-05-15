@@ -2,11 +2,12 @@ import React from "react";
 
 const Card = (props) => {
   let badgeText;
-  if (props.openspots === 0) {
+  if (props.item.openspots === 0) {
     badgeText = "SOLD OUT";
-  } else if (props.country === "Online") {
+  } else if (props.item.country === "Online") {
     badgeText = "Online";
   }
+
   return (
     <div className="ml-20 mt-10 relative">
       {badgeText && (
@@ -18,7 +19,7 @@ const Card = (props) => {
       {/* This is an alternative using logical and operator */}
       {/* It is basic use of and operator the thing is if the first condition is true then only the code will check for second condition and hence run the div or else if first condition is false it wont check for second condition */}
       <img
-        src={`images/${props.img}`}
+        src={`images/${props.item.img}`}
         alt=""
         className="h-64 rounded-xl w-56"
       />
@@ -28,14 +29,14 @@ const Card = (props) => {
       <div>
         <div className="mt-3 flex items-center">
           <img src="images/Star 1.png " alt="" />
-          <span>{props.rating}</span>
-          <span>({props.reviews})</span>
+          <span>{props.item.rating}</span>
+          <span>({props.item.reviews})</span>
           <span>.</span>
-          <span>{props.country}</span>
+          <span>{props.item.country}</span>
         </div>
-        <p className="mt-1">{props.title}</p>
+        <p className="mt-1">{props.item.title}</p>
         <p>
-          <span className="font-bold">From ${props.price} </span>/ person
+          <span className="font-bold">From ${props.item.price} </span>/ person
         </p>
       </div>
     </div>
