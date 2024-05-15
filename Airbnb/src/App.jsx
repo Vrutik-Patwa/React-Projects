@@ -13,6 +13,7 @@ function App() {
         rating={card.rating}
         country={card.country}
         price={card.price}
+        openspots={card.openspots}
       />
     );
   });

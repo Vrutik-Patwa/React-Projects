@@ -6,6 +6,7 @@ export default [
     rating: 5,
     country: "USA",
     price: 589,
+    openspots: 0,
   },
   {
     img: "Card-2.jpg",
@@ -14,6 +15,7 @@ export default [
     rating: 4,
     country: "Mexico",
     price: 200,
+    openspots: 10,
   },
   {
     img: "Card-3.jpg",
@@ -22,13 +24,15 @@ export default [
     rating: 10,
     country: "India",
     price: 1800,
+    openspots: 10,
   },
   {
     img: "Card-4.jpg",
     title: "Travelling Experiences With Nayab",
     reviews: 2,
     rating: 5,
-    country: "China",
+    country: "Online",
     price: 600,
+    openspots: 2,
   },
 ];
