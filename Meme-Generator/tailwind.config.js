@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         header: "#672280",
+        input: "#D1D5DB",
       },
     },
   },
