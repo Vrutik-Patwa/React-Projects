@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import MemesData from "./MemesData";
 const Meme = () => {
-  let url;
+  const [url, setUrl] = useState();
+
   function GenerateMeme(e) {
     const memesArray = MemesData.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
@@ -9,24 +10,25 @@ const Meme = () => {
     // console.log(randomNumber);
     e.preventDefault();
     // So the websites dosent get rerender on clicking a button so we preventingits default functions
-    url = memesArray[randomNumber].url;
+
+    setUrl(memesArray[randomNumber].url);
+    console.log(url);
   }
   return (
     <main className="w-full h-full">
-      <p>{url}</p>
       <form className="flex flex-col  gap-1 ">
         <div className="flex mt-[28px] ml-auto mr-auto">
           <div className="w-[222px] h-[55px]">
             <h3>Top Text</h3>
             <input
-              className="p-2 border-[1px] border-solid outline-none border-input text-input rounded-lg"
+              className="p-2 border-[1px] border-solid outline-none border-input rounded-lg"
               type="text"
             />
           </div>
           <div className="w-[222px] h-[55px]">
             <h3>Bottom Text</h3>
             <input
-              className="p-2 border-solid border-input border-[1px] rounded-lg text-input outline-none"
+              className="p-2 border-solid border-input border-[1px] rounded-lg outline-none"
               type="text"
             />
           </div>
@@ -38,6 +40,9 @@ const Meme = () => {
           >
             Get a new Image
           </button>
+        </div>
+        <div className="flex w-full justify-center mt-8">
+          <img src={url} className="w-[477px] h-[268px]" alt="" />
         </div>
       </form>
     </main>
