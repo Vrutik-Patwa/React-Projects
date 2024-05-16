@@ -17,25 +17,25 @@ const Meme = () => {
   return (
     <main className="w-full h-full">
       <form className="flex flex-col  gap-1 ">
-        <div className="flex mt-[28px] ml-auto mr-auto">
+        <div className="flex flex-row mt-[28px] justify-evenly">
           <div className="w-[222px] h-[55px]">
             <h3>Top Text</h3>
             <input
-              className="p-2 border-[1px] border-solid outline-none border-input rounded-lg"
+              className="p-2 border-[1px] border-solid outline-none border-input rounded-lg w-[222px]"
               type="text"
             />
           </div>
           <div className="w-[222px] h-[55px]">
             <h3>Bottom Text</h3>
             <input
-              className="p-2 border-solid border-input border-[1px] rounded-lg outline-none"
+              className="p-2 border-solid border-input border-[1px] rounded-lg outline-none w-[222px]"
               type="text"
             />
           </div>
         </div>
         <div className="mt-[15px] ml-auto mr-auto flex">
           <button
-            className="text-white liner-gradient-header w-[424px] h-[40px] rounded-md mr-5"
+            className="text-white liner-gradient-header w-[477px] h-[40px] rounded-md mt-3 mb-[-15px]"
             onClick={GenerateMeme}
           >
             Get a new Image
