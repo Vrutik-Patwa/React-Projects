@@ -23,6 +23,15 @@ const Meme = (props) => {
     console.log(url.randomImage);
     // console.log(url);
   }
+  function handleChange(e) {
+    setUrl((prevData) => {
+      return {
+        ...prevData,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
+
   return (
     <main className="w-full h-full">
       <form className="flex flex-col  gap-1 ">
@@ -32,6 +41,10 @@ const Meme = (props) => {
             <input
               className="p-2 border-[1px] border-solid outline-none border-input rounded-lg w-[222px]"
               type="text"
+              placeholder="Top-Text"
+              name="topText"
+              value={url.topText}
+              onChange={handleChange}
             />
           </div>
           <div className="w-[222px] h-[55px]">
@@ -39,6 +52,10 @@ const Meme = (props) => {
             <input
               className="p-2 border-solid border-input border-[1px] rounded-lg outline-none w-[222px]"
               type="text"
+              placeholder="Bottom-text"
+              name="bottomText"
+              value={url.bottomText}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -52,13 +69,21 @@ const Meme = (props) => {
         </div>
         <div className="flex w-full justify-center mt-8 border-none">
           {url.randomImage && (
-            <button onClick={props.func}>
-              <img
-                src={url.randomImage}
-                className="w-[477px] h-[268px] outline-none border-none"
-                alt="Url not found"
-              />
-            </button>
+            <div className="relative flex justify-center">
+              <button onClick={props.func}>
+                <h2 className="font-bold text-white text-4xl absolute w-full stroke-black text-stroke ">
+                  {url.topText}
+                </h2>
+                <img
+                  src={url.randomImage}
+                  className="w-[477px] h-[268px] outline-none border-none"
+                  alt="Url not found"
+                />
+                <h2 className="font-bold text-white text-4xl stroke-black  absolute w-full top-[220px] text-stroke">
+                  {url.bottomText}
+                </h2>
+              </button>
+            </div>
           )}
         </div>
       </form>
