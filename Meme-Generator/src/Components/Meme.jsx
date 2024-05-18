@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import MemesData from "./MemesData";
-const Meme = () => {
-  const [url, setUrl] = useState();
+const Meme = (props) => {
+  const [url, setUrl] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "https://i.imgflip.com/3lmzyx.jpg",
+  });
 
   function GenerateMeme(e) {
     const memesArray = MemesData.data.memes;
@@ -9,10 +13,15 @@ const Meme = () => {
     // Math.random generates between 0 to 1
     // console.log(randomNumber);
     e.preventDefault();
-    // So the websites dosent get rerender on clicking a button so we preventingits default functions
+    // So the websites doesn't get rerender on clicking a button so we preventinzg its default functions
+    const meme = memesArray[randomNumber].url;
+    setUrl((prevState) => ({
+      ...prevState,
+      randomImage: meme,
+    }));
 
-    setUrl(memesArray[randomNumber].url);
-    console.log(url);
+    console.log(url.randomImage);
+    // console.log(url);
   }
   return (
     <main className="w-full h-full">
@@ -41,8 +50,16 @@ const Meme = () => {
             Get a new Image
           </button>
         </div>
-        <div className="flex w-full justify-center mt-8">
-          <img src={url} className="w-[477px] h-[268px]" alt="" />
+        <div className="flex w-full justify-center mt-8 border-none">
+          {url.randomImage && (
+            <button onClick={props.func}>
+              <img
+                src={url.randomImage}
+                className="w-[477px] h-[268px] outline-none border-none"
+                alt="Url not found"
+              />
+            </button>
+          )}
         </div>
       </form>
     </main>
