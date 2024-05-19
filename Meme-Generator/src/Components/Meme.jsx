@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import MemesData from "./MemesData";
+import React, { useEffect, useState } from "react";
+// import MemesData from "./MemesData";
+
 const Meme = (props) => {
   const [url, setUrl] = useState({
     topText: "",
@@ -7,14 +8,42 @@ const Meme = (props) => {
     randomImage: "https://i.imgflip.com/3lmzyx.jpg",
   });
 
+  const [allMemes, setAllmemes] = useState([]);
+  // useEffect(() => {
+  //   fetch("https://api.imgflip.com/get_memes")
+  //     .then((res) => res.json())
+  //     .then((data) => setAllmemes(data.data.memes));
+
+  //   // console.log(allMemes);
+  // }, []);
+
+  // This can be done using async too which will be done linearly
+
+  // useEffect(async () => {
+  //   const res = await fetch("https://api.imgflip.com/get_memes");
+  //   const data = await res.json();
+  //   setAllmemes(data.data.memes);
+  //   console.log(allMemes);
+  // }, []);
+
+  // This wont work due to returning
+
+  useEffect(() => {
+    const allmemes = async () => {
+      const res = await fetch("https://api.imgflip.com/get_memes");
+      const data = await res.json();
+      setAllmemes(data.data.memes);
+    };
+    allmemes();
+  }, []);
   function GenerateMeme(e) {
-    const memesArray = MemesData.data.memes;
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
+    // const memesArray = allMemes;
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
     // Math.random generates between 0 to 1
     // console.log(randomNumber);
     e.preventDefault();
     // So the websites doesn't get rerender on clicking a button so we preventinzg its default functions
-    const meme = memesArray[randomNumber].url;
+    const meme = allMemes[randomNumber].url;
     setUrl((prevState) => ({
       ...prevState,
       randomImage: meme,
@@ -71,7 +100,7 @@ const Meme = (props) => {
           {url.randomImage && (
             <div className="relative flex justify-center">
               <button onClick={props.func}>
-                <h2 className="font-bold text-white text-4xl absolute w-full stroke-black text-stroke ">
+                <h2 className="font-bold text-white text-4xl absolute w-full text-stroke ">
                   {url.topText}
                 </h2>
                 <img

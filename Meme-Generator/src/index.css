@@ -8,8 +8,10 @@
 /* custom.css */
 .text-stroke {
   color: white;
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -1px 1px 0 #000,
+  text-shadow: -2px -2px 0 hsl(0, 0%, 0%), 2px -2px 0 #000, -1px 1px 0 #000,
     2px 2px 0 #000;
+  outline: #000;
+  outline-width: 5px;
 }
 
 .webkit-text-stroke {
