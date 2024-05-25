@@ -5,10 +5,16 @@ const Sidebar = (props) => {
     return (
       <div key={note.id}>
         <div
-          className={p-5 w-full bg-button}  
-     onClick={() => props.setCurrentNoteId(note.id)}
+          className={`cursor-pointer ${
+            note.id === props.currentNote.id
+              ? "bg-button text-white font-bold"
+              : ""
+          }`}
+          onClick={() => props.setCurrentNoteId(note.id)}
         >
-          <h4 className="text-white font-semibold text-md">Note {index + 1}</h4>
+          <h4 className="py-[20px] px-[8px] text-[0.8rem] font-semibold text-md">
+            {note.body.split("\n")[0]}
+          </h4>
           {console.log(note, index)}
         </div>
       </div>
