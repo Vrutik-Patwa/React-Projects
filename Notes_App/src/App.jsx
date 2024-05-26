@@ -44,10 +44,18 @@ function App() {
     //       : oldNote;
     //   })
     // );
-setNotes((oldNotes) =>
-
-)
-    const newArray = []
+    setNotes((oldNotes) => {
+      const newArray = [];
+      for (let i = 0; i < oldNotes.length; i++) {
+        if (oldNotes[i].id === currentNoteId) {
+          newArray.unshift({ ...oldNotes[i], body: text });
+        } else {
+          newArray.push(oldNotes[i]);
+        }
+      }
+      return newArray;
+    });
+    const newArray = [];
 
     /*Pseudo Code 
     1.create new empty array
@@ -55,7 +63,6 @@ setNotes((oldNotes) =>
     2.if the oldnotesid matches the current node id then push the node and put it at top
     3.else push the old note
 */
-  }
   }
 
   function findCurrentNote() {
