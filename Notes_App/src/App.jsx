@@ -55,7 +55,7 @@ function App() {
       }
       return newArray;
     });
-    const newArray = [];
+    // const newArray = [];
 
     /*Pseudo Code 
     1.create new empty array
@@ -65,6 +65,15 @@ function App() {
 */
   }
 
+  function deleteNode(event, noteID) {
+    event.stopPropagation();
+    // console.log(noteID);
+    setNotes((oldNotes) => {
+      oldNotes = oldNotes.filter((note) => note.id != noteID);
+      // Basically note iterates through oldnotes and if note is not equal to noteID it will return noteid
+      return oldNotes;
+    });
+  }
   function findCurrentNote() {
     return (
       notes.find((note) => {
@@ -73,7 +82,7 @@ function App() {
     );
   }
   // setting item to local storage using useeffect so it only renders when notes changes
-  // in storgage we cannot insert complex structures like json so we change it to string
+  // in storage we cannot insert complex structures like json so we change it to string
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
@@ -85,13 +94,14 @@ function App() {
         <Split
           sizes={[20, 80]}
           direction="horizontal"
-          className="flex bg-back h-screen"
+          className="flex bg-back h-screen hide-scrollbar"
         >
           <Sidebar
             addnewnote={createNewNote}
             note={notes}
             currentNote={findCurrentNote()}
             setCurrentNoteId={setCurrentNoteId}
+            deleteNode={deleteNode}
           />
           <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
         </Split>

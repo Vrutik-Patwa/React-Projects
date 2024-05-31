@@ -1,11 +1,11 @@
 import React from "react";
-
+import { MdDelete } from "react-icons/md";
 const Sidebar = (props) => {
   const noteElements = props.note.map((note, index) => {
     return (
       <div key={note.id}>
         <div
-          className={`cursor-pointer ${
+          className={`cursor-pointer flex w-full flex-row justify-between title ${
             note.id === props.currentNote.id
               ? "bg-button text-white font-bold"
               : ""
@@ -15,13 +15,19 @@ const Sidebar = (props) => {
           <h4 className="py-[20px] px-[8px] text-[0.8rem] font-semibold text-md">
             {note.body.split("\n")[0]}
           </h4>
-          {console.log(note, index)}
+          {/* {console.log(note, index)} */}
+          <button
+            className="mr-8 delete-btn"
+            onClick={(event) => props.deleteNode(event, note.id)}
+          >
+            <MdDelete className="" />
+          </button>
         </div>
       </div>
     );
   });
   return (
-    <div className="h-screen bg-white">
+    <div className="h-screen bg-white hide-scrollbar">
       <div className="flex flex-row justify-center gap-6 mt-20">
         <h3 className="text-3xl font-semibold">Notes</h3>
         <button
