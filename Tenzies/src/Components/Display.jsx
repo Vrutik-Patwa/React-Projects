@@ -17,10 +17,33 @@ const Display = () => {
 
   console.log(newDice());
   function rollDice() {
-    setDice(newDice());
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.isHeld
+          ? { ...die }
+          : { ...die, value: Math.ceil(Math.random() * 6) };
+      })
+    );
+  }
+
+  function holdDice(id) {
+    // console.log(id);
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return id == die.id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
   }
   const diceElements = dice.map((number) => {
-    return <Die number={number.value} isHeld={number.isHeld} />;
+    return (
+      <div key={number.id}>
+        <Die
+          number={number.value}
+          isHeld={number.isHeld}
+          holdDice={() => holdDice(number.id)}
+        />
+      </div>
+    );
   });
   return (
     <div className="h-[756px] w-[756px] flex justify-center items-center bg-gamebd">
