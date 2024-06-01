@@ -5,6 +5,7 @@ import Confetti from "react-confetti";
 const Display = () => {
   const [dice, setDice] = useState(newDice());
   const [tenzies, setTenzies] = useState(false);
+  const [rolls, setRolls] = useState(0);
   function newDice() {
     const dice = [];
     for (let i = 0; i < 10; i++) {
@@ -51,9 +52,11 @@ const Display = () => {
             : { ...die, value: Math.ceil(Math.random() * 6) };
         })
       );
+      setRolls((roll) => roll + 1);
     } else {
       setTenzies(false);
       setDice(newDice());
+      setRolls(0);
     }
   }
 
@@ -107,6 +110,7 @@ const Display = () => {
         >
           {tenzies ? "New-Game" : "Roll Dice"}
         </button>
+        <div className="text-xl font-semibold">Rolls :{rolls}</div>
       </div>
     </div>
   );
